@@ -2,22 +2,23 @@ pipeline {
     agent any
 
     stages {
-        // stage('Clone Repository') {
-        //     steps {
-        //         git 'https://github.com/prapuldev/jenkins-prod.git'
-        //     }
-        // }
-
-        stage('Archive HTML Files') {
+        stage('Clone Repository') {
             steps {
-                sh 'zip -r site.zip .'
+                echo 'Cloning the repository...'
+                git branch: 'main', url: 'https://github.com/prapuldev/jenkins-prod.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                echo 'No build steps needed for HTML project'
             }
         }
 
         stage('Deploy') {
             steps {
-                echo 'In a real scenario, this would copy the files to a web server'
-                
+                echo 'Deploying to /var/www/html/'
+                sh 'sudo cp -r * /var/www/html/'
             }
         }
     }
