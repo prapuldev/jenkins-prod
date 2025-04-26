@@ -2,9 +2,22 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
+        // stage('Clone Repository') {
+        //     steps {
+        //         git 'https://github.com/prapuldev/jenkins-prod.git'
+        //     }
+        // }
+
+        stage('Archive HTML Files') {
             steps {
-                echo 'Hello World'
+                sh 'zip -r site.zip .'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo 'In a real scenario, this would copy the files to a web server'
+                
             }
         }
     }
