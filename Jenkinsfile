@@ -4,7 +4,6 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                echo 'Cloning the repository...'
                 git branch: 'main', url: 'https://github.com/prapuldev/jenkins-prod.git'
             }
         }
@@ -15,10 +14,10 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
+        stage('Deploy to New Server') {
             steps {
-                echo 'Deploying to /var/www/html/'
-                sh ' cp -r * /var/www/html/'
+                echo 'Deploying to New Server...'
+                sh 'scp -i ~/Downloads/My-Web-Server.pem * ubuntu@56.228.14.159:/var/www/html/'
             }
         }
     }
