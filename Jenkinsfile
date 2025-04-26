@@ -17,7 +17,7 @@ pipeline {
         stage('Deploy to New Server') {
             steps {
                 echo 'Deploying to New Server...'
-                sh 'scp -i ~/Downloads/My-Web-Server.pem * ubuntu@56.228.14.159:/var/www/html/'
+                sh 'scp -i /var/www/mywebserver.pem /var/www/html/* ubuntu@56.228.14.159:/var/www/html/'
             }
         }
     }
