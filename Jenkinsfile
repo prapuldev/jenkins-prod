@@ -15,9 +15,8 @@ pipeline {
         }
         stage('Deploy to New Server') {
              steps {
-                 echo 'Deploying to New Server...'
-                 sh 'scp -i ~/Downloads/My-Web-Server.pem * ubuntu@56.228.14.159:/var/www/html/'
-                 sh 'scp -i /var/www/mywebserver.pem /var/www/html/* ubuntu@56.228.14.159:/var/www/html/'
+                 echo 'Deploying into to New Server...'
+                 sh 'scp -i /var/www/myappnginxserver.pem /var/lib/jenkins/workspace/html-jenkins-pipeline/*.html ubuntu@3.235.169.86:/var/www/html/'
              }
          }
     }
